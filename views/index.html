@@ -13,6 +13,37 @@
 			
 			<div>Video Dislike Count: <div id="video_dislike_count"> </div></div>
 
+			<table class="table table-hover">
+		    	<thead>
+			      	<tr>
+			        	<th>ID</th>
+			        	<th>Title</th>
+			        	<th>Url</th>
+			        	<th>Webpage Url</th>
+			        	<th>View Count</th>
+			        	<th>Number of Likes</th>
+			        	<th>Number of Display</th>
+			        	<th>Uploaded Date</th>
+			      	</tr>
+		    	</thead>
+		    	
+		    	<tbody>
+					<% for(var i = 0;i < movies.length;i++) { %>
+						<tr>
+							<td><%=movies[i].id%></td>
+							<td><%=movies[i].title%></td>
+							<td><%=movies[i].url%></td>
+							<td><%=movies[i].webpage_url%></td>
+							<td><%=movies[i].view_count%></td>
+							<td><%=movies[i].like_count%></td>
+							<td><%=movies[i].dislike_count%></td>
+							<td><%=movies[i].upload_date%></td>
+						</tr>
+					<% } %>
+		    	</tbody>
+		  	</table>
+			
+
 		</div>
 	</body>
 

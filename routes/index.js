@@ -4,10 +4,30 @@ var express 			= require('express');
 var youtubedl 			= require('youtube-dl');
 var router 				= express.Router();
 
-// Read the file name in the given directory
-// Return all the file name to the front end
 router.get('/', function(req, res) {
-	res.render('index');
+	res.render('index', {movies: ""});
+
+	// Load the top 10 most popular movies
+	// UNCOMMENT THIS CODE WHEN YOU HAVE THE DATABASE SET UP
+	/*
+	req.getConnection(function (err, conn) {
+		if (err){
+			console.log(err);
+			return next("Cannot Connect");
+		}
+		var query = conn.query("SELECT * FROM MOVIE ORDER BY view_count DESC LIMIT 10", function (err, rows) {
+			if (err) {
+				res.status(400).send(err);
+			}
+			
+			if (rows.length == 0){
+				res.status(400).send("No Movie");
+				return ;
+			} 
+			res.render('index', {movies: rows[0]});
+		});
+	});
+	*/
 });
 
 router.get('/scrape', function(req, res){
