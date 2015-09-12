@@ -42,7 +42,7 @@ app.use(connection(mysql,{
 	//host     : 'communityfund.cazlh4nyhwx5.us-east-1.rds.amazonaws.com',
 	database : 'movies',
 	user     : 'root',
-	password : 'root'
+	password : ''
     },'request')
 );
 

@@ -15,11 +15,6 @@ router.get('/', function(req, res) {
 			if (err) {
 				res.status(400).send(err);
 			}
-			
-			if (rows.length == 0){
-				res.status(400).send("No Movie");
-				return ;
-			} 
 			console.log(rows);
 			res.render('index', {movies: rows});
 		});
@@ -66,6 +61,7 @@ router.get('/insertMovie', function(req, res){
 					dislike_count: info.dislike_count,
 					upload_date: info.upload_date,
 				};
+				/*
 
 				var query = conn.query("INSERT INTO movie SET ? ", data, function (err, rows) {
 					if (err) {
@@ -78,6 +74,7 @@ router.get('/insertMovie', function(req, res){
 					} 
 					console.log("Movie Inserted");
 				});
+				*/
 			});
 		};
 	});
