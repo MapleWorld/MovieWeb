@@ -10,6 +10,7 @@ function getVideoInfo(){
 			$("#video_dislike_count").html(data.dislike_count);
 		}, error : function(xhr, status, error) {
 			console.log(xhr.responseText);
+			$.growl.error({ title: "", message: xhr.responseText });
 			return false;
 		}
 	});
