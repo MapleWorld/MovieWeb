@@ -5,11 +5,7 @@ var youtubedl 			= require('youtube-dl');
 var router 				= express.Router();
 
 router.get('/', function(req, res) {
-	res.render('index', {movies: ""});
-
 	// Load the top 10 most popular movies
-	// UNCOMMENT THIS CODE WHEN YOU HAVE THE DATABASE SET UP
-	/*
 	req.getConnection(function (err, conn) {
 		if (err){
 			console.log(err);
@@ -24,13 +20,14 @@ router.get('/', function(req, res) {
 				res.status(400).send("No Movie");
 				return ;
 			} 
-			res.render('index', {movies: rows[0]});
+			console.log(rows);
+			res.render('index', {movies: rows});
 		});
 	});
-	*/
+	
 });
 
-router.get('/scrape', function(req, res){
+router.get('/insertMovie', function(req, res){
 		
 	req.getConnection(function (err, conn) {
 		if (err){
@@ -39,41 +36,50 @@ router.get('/scrape', function(req, res){
 		}
 
 		// Video Url
-		video_url = 'http://www.youtube.com/watch?v=fny1Xp-ixgs';
+		video_url = [
+			'http://www.youtube.com/watch?v=fny1Xp-ixgs',
+			'http://www.youtube.com/watch?v=l1Q-cI4RE5s',
+			'http://www.youtube.com/watch?v=QdU4E-JZJeo&index=1&list=PLzIW3-I4H4F5aBt4v4TQl1y6ug4-VeJOt',
+			'http://www.youtube.com/watch?v=fyRlFzn0UkU&index=2&list=PLzIW3-I4H4F5aBt4v4TQl1y6ug4-VeJOt',
+			'http://www.youtube.com/watch?v=4k8M87t7E-U&list=PLzIW3-I4H4F5aBt4v4TQl1y6ug4-VeJOt&index=3',
+			'http://www.youtube.com/watch?v=7GCz7MbBM_U&index=4&list=PLzIW3-I4H4F5aBt4v4TQl1y6ug4-VeJOt',
+			'http://www.youtube.com/watch?v=hzOzpxHnGHE&list=PLzIW3-I4H4F5WlqwdC7lo83hA4BbjPAYq',
+			'http://www.youtube.com/watch?v=UVUwqxuDb9A&index=2&list=PLzIW3-I4H4F5WlqwdC7lo83hA4BbjPAYq',
+			'http://www.youtube.com/watch?v=QgaTQ5-XfMM&index=3&list=PLzIW3-I4H4F5WlqwdC7lo83hA4BbjPAYq',
+			'http://www.youtube.com/watch?v=H2-1u8xvk54&index=5&list=PLzIW3-I4H4F5WlqwdC7lo83hA4BbjPAYq',
+			'http://www.youtube.com/watch?v=qycqF1CWcXg&list=PLzIW3-I4H4F5WlqwdC7lo83hA4BbjPAYq&index=8'
+		];
 
 		// Get the video info and send it the front end and print it out
 		var options = ['--username=IBMEmailTester@gmail.com', '--password=ibmemailtester110'];
-		youtubedl.getInfo(video_url, options, function(err, info) {
-			if (err) throw err;
-			console.log(info);
+		for (var i = 0;i < video_url.length; i++) {
+			youtubedl.getInfo(video_url[i], options, function(err, info) {
+				if (err) throw err;
+				console.log(info);
 
-			var data = {
-				title: info.title,
-				url: info.url,
-				webpage_url: info.webpage_url,
-				view_count: info.view_count,
-				like_count: info.like_count,
-				dislike_count: info.dislike_count,
-				upload_date: info.upload_date,
-			};
+				var data = {
+					title: info.title,
+					url: info.url,
+					webpage_url: info.webpage_url,
+					view_count: info.view_count,
+					like_count: info.like_count,
+					dislike_count: info.dislike_count,
+					upload_date: info.upload_date,
+				};
 
-			// UNCOMMENT THIS CODE WHEN YOU HAVE THE DATABASE SET UP
-			/*
-			var query = conn.query("INSERT INTO movie SET ? ", data, function (err, rows) {
-				if (err) {
-					res.status(400).send(err);
-				}
-				
-				if (rows.length == 0){
-					res.status(400).send("Can't Insert");
-					return ;
-				} 
-				console.log("Movie Inserted");
+				var query = conn.query("INSERT INTO movie SET ? ", data, function (err, rows) {
+					if (err) {
+						res.status(400).send(err);
+					}
+					
+					if (rows.length == 0){
+						res.status(400).send("Can't Insert");
+						return ;
+					} 
+					console.log("Movie Inserted");
+				});
 			});
-			*/
-			res.send(info);
-		});
-		
+		};
 	});
 	
 

@@ -37,8 +37,6 @@ app.use(session({
 
 /*MySql Connection*/
 /* Comment this part if don't have database install'*/
-// UNCOMMENT THIS CODE WHEN YOU HAVE THE DATABASE SET UP
-/*
 app.use(connection(mysql,{
 	host     : 'localhost',
 	//host     : 'communityfund.cazlh4nyhwx5.us-east-1.rds.amazonaws.com',
@@ -47,7 +45,7 @@ app.use(connection(mysql,{
 	password : 'root'
     },'request')
 );
-*/
+
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
