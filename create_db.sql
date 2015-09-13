@@ -11,7 +11,8 @@ create table movie (
 	view_count int NOT NULL,
 	like_count int NOT NULL,
 	dislike_count int NOT NULL,
-	upload_date int NOT NULL
+	upload_date int NOT NULL,
+	tiff_date int
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 	

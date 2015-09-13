@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 			console.log(err);
 			return next("Cannot Connect");
 		}
-		var query = conn.query("SELECT * FROM MOVIE ORDER BY view_count DESC LIMIT 10", function (err, rows) {
+		var query = conn.query("SELECT * FROM movie ORDER BY view_count DESC LIMIT 10", function (err, rows) {
 			if (err) {
 				res.status(400).send(err);
 			}
