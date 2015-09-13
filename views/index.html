@@ -2,37 +2,32 @@
 <% include header.html %>
 
 	<body>
+
+	<div>TIFF 2015 Movie Recommander</div>
+		<div class="container">
+			<h2>Dropdowns</h2>
+                                
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><a onclick="SearchByDate(20150915)">September 15, 2015</a></li>
+					<li><a onclick="SearchByDate(20150916)">September 16, 2015</a></li>
+					<li><a onclick="SearchByDate(20150917)">September 17, 2015</a></li>
+					<li><a onclick="SearchByDate(20150918)">September 18, 2015</a></li>
+					<li><a onclick="SearchByDate(20150919)">September 19, 2015</a></li>
+					<li><a onclick="SearchByDate(20150919)">September 19, 2015</a></li>
+					<li><a onclick="SearchByDate(20150920)">September 20, 2015</a></li>
+					<li><a onclick="SearchByDate(20150921)">September 21, 2015</a></li>
+				</ul>
+			</div>
+		</div>
+
 		<button type"button" onclick="InsertVideoInfo();">Insert Video Info</button>
 		<button type"button" onclick="ClearDB();">Clear DB</button>
-		<div id="video_info">
-			<table class="table table-hover">
-		    	<thead>
-			      	<tr>
-			        	<th>ID</th>
-			        	<th>Title</th>
-			        	<th>Webpage Url</th>
-			        	<th>View Count</th>
-			        	<th>Number of Likes</th>
-			        	<th>Number of Display</th>
-			        	<th>Uploaded Date</th>
-			      	</tr>
-		    	</thead>
-		    	
-		    	<tbody>
-					<% for(var i = 0;i < movies.length; i++) { %>
-						<tr>
-							<td><%=movies[i].id%></td>
-							<td><%=movies[i].title%></td>
-							<td><%=movies[i].webpage_url%></td>
-							<td><%=movies[i].view_count%></td>
-							<td><%=movies[i].like_count%></td>
-							<td><%=movies[i].dislike_count%></td>
-							<td><%=movies[i].upload_date%></td>
-						</tr>
-					<% } %>
-		    	</tbody>
-		  	</table>
-		</div>
-	</body>
+		<button type"button" onclick="ListAllMovies();">List All Movie</button>
 
+		<div id="video_info"></div>
+	</body>
 </html>
