@@ -4,6 +4,8 @@ var express 			= require('express');
 var youtubedl 			= require('youtube-dl');
 var router 				= express.Router();
 
+var func = require('../public/js/function');
+
 router.get('/', function(req, res) {
 	res.render('index', {movies: ""});
 	// Load the top 10 most popular movies
@@ -17,7 +19,6 @@ router.get('/', function(req, res) {
 			if (err) {
 				res.status(400).send(err);
 			}
-			console.log(rows);
 			res.render('index', {movies: rows});
 		});
 	});
@@ -81,43 +82,11 @@ router.get('/insertMovie', function(req, res){
 			{ name: "THE LOBSTER", tiff_date: 20150912, url: "https://www.youtube.com/watch?v=NYQE2cU37bQ&list=PL1tg47x0U7tGkGf5LF31q9rF_Mf1JWMPg&index=95" }
 		];
 
-		// Get the video info and send it the front end and print it out
-		var options = ['--username=IBMEmailTester@gmail.com', '--password=ibmemailtester110'];
 		for (var i = 0;i < videos.length; i++) {
-			youtubedl.getInfo(videos[i].url, options, function(err, info) {
-				if (err) throw err;
-				console.log(info);
-
-				var data = {
-					title: info.title,
-					name: videos[i].name,
-					url: info.url,
-					webpage_url: info.webpage_url,
-					view_count: info.view_count,
-					like_count: info.like_count,
-					dislike_count: info.dislike_count,
-					upload_date: info.upload_date,
-					tiff_date: videos[i].tiff_date
-				};
-				/*
-
-				var query = conn.query("INSERT INTO movie SET ? ", data, function (err, rows) {
-					if (err) {
-						res.status(400).send(err);
-					}
-					
-					if (rows.length == 0){
-						res.status(400).send("Can't Insert");
-						return ;
-					} 
-					console.log("Movie Inserted");
-				});
-				*/
-			});
+			func.getVideoInfo(videos[i], res, conn);
 		};
+		console.log("Insertion Completed");
 	});
-	
-
 })
 
 module.exports = router;
