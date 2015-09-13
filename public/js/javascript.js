@@ -11,3 +11,17 @@ function InsertVideoInfo(){
 		}
 	});
 };
+
+function ClearDB(){
+	$.ajax({
+		type : "GET",
+		url : "/clear",
+		success : function(data) {
+			$.growl.notice({ title: "", message: xhr.responseText });
+		}, error : function(xhr, status, error) {
+			console.log(xhr.responseText);
+			$.growl.error({ title: "", message: xhr.responseText });
+			return false;
+		}
+	});
+};

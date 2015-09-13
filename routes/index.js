@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 	req.getConnection(function (err, conn) {
 		if (err){
 			console.log(err);
-			return next("Cannot Connect");
+			res.status(400).send(err);
 		}
 		var query = conn.query("SELECT * FROM movie ORDER BY view_count DESC LIMIT 10", function (err, rows) {
 			if (err) {
@@ -20,6 +20,22 @@ router.get('/', function(req, res) {
 		});
 	});
 	
+});
+
+router.get('/clear', function(req, res) {
+	// Load the top 10 most popular movies
+	req.getConnection(function (err, conn) {
+		if (err){
+			console.log(err);
+			return next("Cannot Connect");
+		}
+		var query = conn.query("delete from movie", function (err, rows) {
+			if (err) {
+				res.status(400).send(err);
+			}
+			res.status(200).send("DB Cleared");
+		});
+	});
 });
 
 router.get('/insertMovie', function(req, res){
