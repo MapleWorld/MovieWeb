@@ -6,6 +6,7 @@ create table movie (
 	-- General Data
 	id int AUTO_INCREMENT PRIMARY KEY,
 	title varchar(255) NOT NULL,
+	movie_anme varchar(255) NOT NULL,
 	url varchar(2083) NOT NULL,
 	webpage_url varchar(2083) NOT NULL,
 	view_count int NOT NULL,
