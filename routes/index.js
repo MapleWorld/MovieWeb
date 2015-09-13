@@ -5,7 +5,9 @@ var youtubedl 			= require('youtube-dl');
 var router 				= express.Router();
 
 router.get('/', function(req, res) {
+	res.render('index', {movies: ""});
 	// Load the top 10 most popular movies
+	/*
 	req.getConnection(function (err, conn) {
 		if (err){
 			console.log(err);
@@ -19,7 +21,7 @@ router.get('/', function(req, res) {
 			res.render('index', {movies: rows});
 		});
 	});
-	
+	*/
 });
 
 router.get('/clear', function(req, res) {
