@@ -19,13 +19,15 @@ create table movie (
 create table huff_post (
 	-- General Data
 	id int AUTO_INCREMENT PRIMARY KEY,
-	name varchar(255) NOT NULL
+	name varchar(255) NOT NULL,
+	recommanded varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table national_post (
 	-- General Data
 	id int AUTO_INCREMENT PRIMARY KEY,
-	name varchar(255) NOT NULL
+	name varchar(255) NOT NULL,
+	recommanded varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create table all_movies (
