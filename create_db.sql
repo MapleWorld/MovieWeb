@@ -17,3 +17,11 @@ create table movie (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 	
+create table all_movies (
+	-- General Data
+	id int AUTO_INCREMENT PRIMARY KEY,
+	name varchar(255) NOT NULL,
+	webpage_url varchar(2083) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+	
