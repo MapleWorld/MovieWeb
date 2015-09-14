@@ -6,7 +6,6 @@ var router 				= express.Router();
 
 var func = require('../public/js/function');
 
-
 var table_query = "SELECT DISTINCT movie.name, movie.webpage_url, movie.like_count, movie.tiff_date" 
 			+ "huff_post.recommanded as h_r, national_post.recommanded as n_r "
 			+ "FROM `movie` "
@@ -33,8 +32,13 @@ router.get('/default/table', function(req, res) {
 		var query = conn.query("SELECT * FROM " + table_query + " as table ORDER BY table.view_count DESC LIMIT 10", function (err, rows) {
 			if (err) {
 				res.status(400).send(err);
+				return false;
 			}
-			res.render('table', {movies: rows});
+			if (rows === undefined) {
+				res.render('table', {movies: []});
+			} else {
+				res.render('table', {movies: rows});
+			}
 		});
 	});
 });
