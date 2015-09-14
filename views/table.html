@@ -2,12 +2,10 @@
 	<thead>
       	<tr>
         	<th>Movie Name</th>
-        	<th>Video Name</th>
-        	<th>Webpage Url</th>
+        	<th>Youtube Trailer</th>
         	<th>View Count</th>
         	<th>Number of Likes</th>
         	<th>Number of Display</th>
-        	<th>Uploaded Date</th>
       	</tr>
 	</thead>
 	
@@ -15,12 +13,10 @@
 		<% for(var i = 0;i < movies.length; i++) { %>
 			<tr>
 				<td><%=movies[i].name%></td>
-				<td><%=movies[i].title%></td>
-				<td><%=movies[i].webpage_url%></td>
+				<td><a href="<%=movies[i].webpage_url%>">Watch Now</a></td>
 				<td><%=movies[i].view_count%></td>
 				<td><%=movies[i].like_count%></td>
 				<td><%=movies[i].dislike_count%></td>
-				<td><%=movies[i].upload_date%></td>
 			</tr>
 		<% } %>
 	</tbody>
