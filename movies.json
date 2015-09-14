@@ -213,6 +213,9 @@ var videos =[
 
 
 
+
+
+
 				 
 all = [
 	{ name: "BANG GANG", url: "http://www.youtube.com/watch?v=PWi0XLFE1MQ&list=PL1tg47x0U7tGkGf5LF31q9rF_Mf1JWMPg"},
@@ -382,5 +385,10 @@ all = [
 	{ name: "NEVER STEADY NEVER STILL", url: "http://www.youtube.com/watch?v=e0fhQHPhBQg&list=PL1tg47x0U7tGkGf5LF31q9rF_Mf1JWMPg&index=167"},
 	{ name: "NEVER HAPPENED", url: "http://www.youtube.com/watch?v=OJK7vf2J9Xo&list=PL1tg47x0U7tGkGf5LF31q9rF_Mf1JWMPg&index=168"}
 ]
+
+
+
+
+
 
 

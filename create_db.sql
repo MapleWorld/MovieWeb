@@ -15,8 +15,19 @@ create table movie (
 	upload_date int NOT NULL,
 	tiff_date int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 	
+create table huff_post (
+	-- General Data
+	id int AUTO_INCREMENT PRIMARY KEY,
+	name varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table national_post (
+	-- General Data
+	id int AUTO_INCREMENT PRIMARY KEY,
+	name varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 create table all_movies (
 	-- General Data
 	id int AUTO_INCREMENT PRIMARY KEY,
