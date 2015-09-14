@@ -40,7 +40,7 @@ app.use(connection(mysql,{
 	//host     : 'movies.cazlh4nyhwx5.us-east-1.rds.amazonaws.com',
 	database : 'movies',
 	user     : 'root',
-	password : ''
+	password : 'root'
     },'request')
 );
 
