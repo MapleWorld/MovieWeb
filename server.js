@@ -36,11 +36,11 @@ app.use(session({
 /*MySql Connection*/
 /* Comment this part if don't have database install'*/
 app.use(connection(mysql,{
-	//host     : 'localhost',
-	host     : 'movies.cazlh4nyhwx5.us-east-1.rds.amazonaws.com',
+	host     : 'localhost',
+	//host     : 'movies.cazlh4nyhwx5.us-east-1.rds.amazonaws.com',
 	database : 'movies',
 	user     : 'root',
-	password : 'password'
+	password : ''
     },'request')
 );
 

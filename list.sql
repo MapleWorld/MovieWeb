@@ -1,11 +1,11 @@
-SELECT movie.name, huff_post.recommanded as h_r, national_post.recommanded as n_r
+SELECT movie.name, movie.webpage_url, movie.like_count, movie.tiff_date, huff_post.recommanded as h_r, national_post.recommanded as n_r
 FROM `movie`
 LEFT JOIN `huff_post` on movie.name = huff_post.name
 LEFT JOIN `national_post` on movie.name = national_post.name 
 
 UNION
 
-SELECT movie.name, huff_post.recommanded as h_r, national_post.recommanded as n_r
+SELECT movie.name, movie.webpage_url, movie.like_count, movie.tiff_date, huff_post.recommanded as h_r, national_post.recommanded as n_r
 FROM `movie`
 LEFT JOIN `huff_post` on movie.name = huff_post.name
 LEFT JOIN `national_post` on movie.name = national_post.name ;
