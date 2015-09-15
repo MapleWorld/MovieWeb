@@ -6,6 +6,19 @@ var router 				= express.Router();
 
 var func = require('../public/js/function');
 
+var table_query = 
+			  "SELECT movie.name, movie.view_count, movie.webpage_url, movie.like_count, movie.tiff_date, " 
+			+ "huff_post.recommanded as h_r, national_post.recommanded as n_r "
+			+ "FROM `movie` "
+			+ "LEFT JOIN `huff_post` on movie.name = huff_post.name "
+			+ "LEFT JOIN `national_post` on movie.name = national_post.name "
+			+ "UNION "
+			+ "SELECT movie.name, movie.view_count, movie.webpage_url, movie.like_count, movie.tiff_date, "
+			+ "huff_post.recommanded as h_r, national_post.recommanded as n_r "
+			+ "FROM `movie` "
+			+ "LEFT JOIN `huff_post` on movie.name = huff_post.name "
+			+ "LEFT JOIN `national_post` on movie.name = national_post.name ";
+
 router.get('/', function(req, res) {
 	res.render('index');
 });
@@ -18,9 +31,70 @@ router.get('/default/table', function(req, res) {
 			res.status(400).send(err);
 			return false;
 		}
-		var query = conn.query("SELECT DISTINCT name, webpage_url, view_count, like_count FROM movie ORDER BY view_count DESC LIMIT 10", function (err, rows) {
+		var query = conn.query("SELECT DISTINCT tables.name, tables.view_count, tables.webpage_url, tables.like_count, " 
+						+ "tables.h_r, tables.n_r FROM (" + table_query + ") as tables ORDER BY tables.view_count DESC LIMIT 10", function (err, rows) {
+			if (err) {
+				console.log(err);
+				res.status(400).send(err);
+				return false;
+			}
+			if (rows === undefined) {
+				res.render('table', {movies: []});
+			} else {
+				res.render('table', {movies: rows});
+			}
+		});
+	});
+});
+
+router.get('/search/date/:date', function(req, res) {
+	// Load all the movies on given date
+	req.getConnection(function (err, conn) {
+		if (err){
+			console.log(err);
+			res.status(400).send(err);
+			return false;
+		}
+		var query = conn.query("SELECT * FROM (" + table_query + ") as tables WHERE tables.tiff_date=" + req.params.date, function (err, rows) {
 			if (err) {
 				res.status(400).send(err);
+				return false;
+			}
+			res.render('table', {movies: rows});
+		});
+	});
+});
+
+router.get('/search/name/:name', function(req, res) {
+	// Load all the movies on given date
+	req.getConnection(function (err, conn) {
+		if (err){
+			console.log(err);
+			res.status(400).send(err);
+			return false;
+		}
+		var query = conn.query("SELECT * FROM (" + table_query + ") as tables WHERE tables.name=" + req.params.name, function (err, rows) {
+			if (err) {
+				res.status(400).send(err);
+				return false;
+			}
+			res.render('table', {movies: rows});
+		});
+	});
+});
+
+router.get('/all/movies', function(req, res) {
+	// Load all the movies on given date
+	req.getConnection(function (err, conn) {
+		if (err){
+			console.log(err);
+			res.status(400).send(err);
+			return false;
+		}
+		var query = conn.query(table_query, function (err, rows) {
+			if (err) {
+				res.status(400).send(err);
+				return false;
 			}
 			res.render('table', {movies: rows});
 		});
@@ -43,6 +117,7 @@ router.get('/clear', function(req, res) {
 		});
 	});
 });
+
 
 router.get('/insertMovie', function(req, res){
 		
@@ -252,59 +327,5 @@ router.get('/insertMovie', function(req, res){
 		console.log("Insertion Completed");
 	});
 })
-
-router.get('/search/date/:date', function(req, res) {
-	// Load all the movies on given date
-	req.getConnection(function (err, conn) {
-		if (err){
-			console.log(err);
-			res.status(400).send(err);
-			return false;
-		}
-		var query = conn.query("SELECT * FROM movie WHERE tiff_date=" + req.params.date, function (err, rows) {
-			if (err) {
-				res.status(400).send(err);
-				return false;
-			}
-			res.render('table', {movies: rows});
-		});
-	});
-});
-
-router.get('/search/name/:name', function(req, res) {
-	// Load all the movies on given date
-	req.getConnection(function (err, conn) {
-		if (err){
-			console.log(err);
-			res.status(400).send(err);
-			return false;
-		}
-		var query = conn.query("SELECT * FROM movie WHERE name=" + req.params.name, function (err, rows) {
-			if (err) {
-				res.status(400).send(err);
-				return false;
-			}
-			res.render('table', {movies: rows});
-		});
-	});
-});
-
-router.get('/all/movies', function(req, res) {
-	// Load all the movies on given date
-	req.getConnection(function (err, conn) {
-		if (err){
-			console.log(err);
-			res.status(400).send(err);
-			return false;
-		}
-		var query = conn.query("SELECT * FROM movie", function (err, rows) {
-			if (err) {
-				res.status(400).send(err);
-				return false;
-			}
-			res.render('table', {movies: rows});
-		});
-	});
-});
 
 module.exports = router;
