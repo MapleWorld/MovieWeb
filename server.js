@@ -12,6 +12,8 @@ var connection			= require('express-myconnection');
 
 var app					= express();
 
+global.visitor_count = 0;
+
 app.engine('html', require('ejs').__express);
 app.set('views','./views');
 app.set('view engine','html');

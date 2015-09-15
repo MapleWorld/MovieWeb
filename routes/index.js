@@ -20,6 +20,8 @@ var table_query =
 			+ "LEFT JOIN `national_post` on movie.name = national_post.name ";
 
 router.get('/', function(req, res) {
+	global.visitor_count += 1;
+	console.log(global.visitor_count);
 	res.render('index');
 });
 
