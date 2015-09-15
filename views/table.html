@@ -1,12 +1,12 @@
-<table class="table table-hover">
-	<thead>
+<table class="table table-striped" id="row_sep">
+      <thead>
       	<tr>
-        	<th>Movie Name</th>
-        	<th>Youtube Trailer</th>
-        	<th>Number of Likes</th>
-        	<th>New Article</th>
+        	<th class="table_title"><img src="/../img/movie.png" id="movie">Movie Name</th>
+        	<th class="table_title"><img src="/../img/youtube.png" id="youtubelike">Youtube Likes</th>
+        	<th class="table_title"><img src="/../img/trailer.png" id="trailer">Youtube Trailer</th>
+			<th class="table_title">News Article Mentioned</th>
       	</tr>
-	</thead>
+	   </thead>
 	
 	<tbody>
 		<% for(var i = 0;i < movies.length; i++) { %>

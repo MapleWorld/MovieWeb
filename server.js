@@ -57,8 +57,10 @@ app.use(function (req, res, next) {
 // Routes	
 var router 			= express.Router();
 var index 			= require('./routes/index');
+var search			= require('./routes/search');
 
 app.use('/', index);
+app.use('/', search);
 
 //start Server
 var server = app.listen(8080,function(){

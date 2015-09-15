@@ -1,0 +1,63 @@
+<!-- Include the header file -->
+<% include header.html %>
+
+	<body>
+		<div class="navbar-static-top">
+			 <!-- <p id="nav_cus">TIFF 2015 Movie Recommander</p>  -->
+			 <img src="/../img/nav.png" id="nav_img" alt="TIFF 2015 Movie Recommender title">
+		</div>
+		
+		<div class="row">
+			<div class="right">
+				<table class="table table-striped" id="row_sep">
+				      <thead>
+				      	<tr>
+				        	<th class="table_title"><img src="/../img/movie.png" id="movie">Movie Name</th>
+				        	<th class="table_title"><img src="/../img/youtube.png" id="youtubelike">Youtube Likes</th>
+				        	<th class="table_title"><img src="/../img/trailer.png" id="trailer">Youtube Trailer</th>
+							<th class="table_title">News Article Mentioned</th>
+				      	</tr>
+					   </thead>
+					
+					<tbody>
+						<% for(var i = 0;i < movies.length; i++) { %>
+							<tr>
+								<td><%=movies[i].name%></td>
+								<td><%=movies[i].like_count%></td>
+								<td><a href="<%=movies[i].webpage_url%>">Watch Now</a></td>
+								<% if (movies[i].h_r === "YES") { %>
+									<td><a href="http://www.huffingtonpost.ca/2015/08/10/movies-at-tiff-2015_n_7942630.html">Huff Post</a></td> %>
+								<% } else if (movies[i].n_r === "YES") { %>
+									<td><a href="http://news.nationalpost.com/arts/movies/tiff-2015-five-films-you-should-see-and-five-we-want-to-see">National Post</a></td>
+								<% } else { %>
+								 	<td><a href="http://www.google.com">Google It =)</a></td>
+								<% } %>
+							</tr>
+						<% } %>
+					</tbody>
+				</table>
+	        </div>
+			
+			<div class="left">
+				<img src="/../img/left.png" id="left_img" alt="TIFF 2015 Movie Recommender title">
+				<div id="land_button_div">
+		        	<div class="dropdown">
+						<button id="dropdown_cus2" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Available Date
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" id="drop_down_to_right">
+							<li><a href="/search/date/20150915">September 15, 2015</a></li>
+							<li><a href="/search/date/20150916">September 16, 2015</a></li>
+							<li><a href="/search/date/20150917">September 17, 2015</a></li>
+							<li><a href="/search/date/20150918">September 18, 2015</a></li>
+							<li><a href="/search/date/20150919">September 19, 2015</a></li>
+							<li><a href="/search/date/20150920">September 20, 2015</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<img id="condition" src="/../img/condition.png" id="movie">
+			</div>
+		</div>
+	</body>
+</html>

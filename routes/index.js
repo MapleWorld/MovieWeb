@@ -23,66 +23,6 @@ router.get('/', function(req, res) {
 	res.render('index');
 });
 
-router.get('/default/table', function(req, res) {
-	// Load the top 10 most popular movies
-	req.getConnection(function (err, conn) {
-		if (err){
-			console.log(err);
-			res.status(400).send(err);
-			return false;
-		}
-		var query = conn.query("SELECT DISTINCT tables.name, tables.view_count, tables.webpage_url, tables.like_count, " 
-						+ "tables.h_r, tables.n_r FROM (" + table_query + ") as tables ORDER BY tables.view_count DESC LIMIT 10", function (err, rows) {
-			if (err) {
-				console.log(err);
-				res.status(400).send(err);
-				return false;
-			}
-			if (rows === undefined) {
-				res.render('table', {movies: []});
-			} else {
-				res.render('table', {movies: rows});
-			}
-		});
-	});
-});
-
-router.get('/search/date/:date', function(req, res) {
-	// Load all the movies on given date
-	req.getConnection(function (err, conn) {
-		if (err){
-			console.log(err);
-			res.status(400).send(err);
-			return false;
-		}
-		var query = conn.query("SELECT * FROM (" + table_query + ") as tables WHERE tables.tiff_date=" + req.params.date, function (err, rows) {
-			if (err) {
-				res.status(400).send(err);
-				return false;
-			}
-			res.render('table', {movies: rows});
-		});
-	});
-});
-
-router.get('/search/name/:name', function(req, res) {
-	// Load all the movies on given date
-	req.getConnection(function (err, conn) {
-		if (err){
-			console.log(err);
-			res.status(400).send(err);
-			return false;
-		}
-		var query = conn.query("SELECT * FROM (" + table_query + ") as tables WHERE tables.name=" + req.params.name, function (err, rows) {
-			if (err) {
-				res.status(400).send(err);
-				return false;
-			}
-			res.render('table', {movies: rows});
-		});
-	});
-});
-
 router.get('/all/movies', function(req, res) {
 	// Load all the movies on given date
 	req.getConnection(function (err, conn) {
@@ -96,7 +36,7 @@ router.get('/all/movies', function(req, res) {
 				res.status(400).send(err);
 				return false;
 			}
-			res.render('table', {movies: rows});
+			res.render('search', {movies: rows});
 		});
 	});
 });
@@ -126,6 +66,14 @@ router.get('/insertMovie', function(req, res){
 			console.log(err, " Cannot Connect");
 			return false;
 		}
+
+		conn.query("Truncate table movie", function (err, rows) {
+			if (err) {
+				res.status(400).send(err);
+				return false;
+			} 
+			console.log("Table Truncated");
+		});
 
 		// Video Url
 		var videos = [

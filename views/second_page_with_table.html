@@ -24,6 +24,21 @@
 			   </thead>
 			
 			<tbody>
+				<% for(var i = 0;i < movies.length; i++) { %>
+					<tr>
+						<td><%=movies[i].name%></td>
+						<td><a href="<%=movies[i].webpage_url%>">Watch Now</a></td>
+						<td><%=movies[i].like_count%></td>
+						<% if (movies[i].h_r === "YES") { %>
+							<td><a href="#">Huff Post</a></td> %>
+						<% } else if (movies[i].n_r === "YES") { %>
+							<td><a href="#">National Post</a></td>
+						<% } else { %>
+						 	<td>None</td>
+						<% } %>
+					</tr>
+				<% } %>
+
 					<tr>
 						<td>ASDSAD</td>
 						<td>12312</td>
