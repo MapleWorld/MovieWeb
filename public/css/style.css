@@ -1,0 +1,242 @@
+* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.sidebar_cus{
+
+  margin-top: 5em;
+}
+#note{
+  float: right;
+  
+  width:15%;
+
+}
+#nav_cus{
+  color:white;
+  font-size: 60px;
+  font-weight: bold;
+  background-color: grey;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+
+#land_button{
+  
+  float: right;
+  padding-right:13%;
+  width:59%; 
+
+}
+#drop_down_to_right a{
+text-align: center;
+  
+  padding-left: 1%;
+  padding-right: 1%;
+  font-size: 95%;
+
+}
+#movie{
+  /*padding-left: 0%;
+  padding-right: 0%;*/
+  width: 10%;
+  height: 4%;
+}
+#trailer{
+  /*padding-left: 0%;
+  padding-right: 0%;*/
+  width: 10%;
+  height: 4%;
+}
+#footer {
+   position:absolute;
+   bottom:0;
+   color:black;
+   text-align: center;
+   font-size: 12px;
+  
+}
+#condition{
+   position:absolute;
+   bottom:0; 
+   padding-left: 1%;
+  padding-right: 1%;
+  width: 20%;
+
+}
+#youtubelike{
+  /*padding-left: 0%;
+  padding-right: 0%;*/
+  width: 10%;
+  height: 4%;
+}
+#row_sep{
+  border-color: orange;
+}
+#drop_down_to_right {
+  width: 90%;
+  margin-left:2%; 
+
+  
+}
+.dropdown-menu a{
+  font-size: 23.5px;
+  padding-left: 5px;
+}
+.right{
+  width: 75%;
+  float: right;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 2em;
+}
+
+.left{
+  margin-top: 40px;
+  width: 22%;
+  margin-left: 1em;
+  margin-right: 1em;
+  font-size: 37px;
+}
+.left p{
+  font-size: 100%;
+  
+  color: grey;
+  font-weight: bold;
+
+}
+
+
+#left_p{
+  color: black;
+  font-size: 20px;
+  font-weight: normal;
+}
+#left_img{
+  padding-left: 1%;
+  padding-right: 1%;
+  width: 90%;
+}
+#nav_img{
+  padding-left: 0%;
+  padding-right: 0%;
+  width: 100%;
+}
+.left span{
+  font-size: 20px;
+  margin: 2px;
+}
+.table_title{
+  width: 1%;
+
+  text-align: center;
+}
+
+.container{
+  margin-top: 4.3em;
+}
+#select_date_group{
+  padding-left: 42%; 
+  
+}
+
+#dropdown_cus{
+  background-color: white;
+  font-size: 23px;
+  color: black;
+  border-color: red;
+}
+#dropdown_cus2{
+  padding-left:1%;
+  padding-right:1%;
+  width:85%; 
+  background-color: white;
+  margin: 10px;
+  color: grey;
+  border-color: red;
+}
+#select_date{
+  font-weight: bold;
+  font-size: 23px;
+}
+.font_size{
+  font-size: 21px;
+  border-color: red;
+}
+#title{
+  width:100%; 
+  height:auto;
+}
+#nav_cus{
+  width:100%; 
+  height:auto;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+
+/* Custom page footer */
+
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #aaaaaa;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  
+  /* Space out the masthead */
+  .header {
+   /* margin-bottom: 30px;*/
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}

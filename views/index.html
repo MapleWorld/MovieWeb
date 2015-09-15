@@ -1,14 +1,14 @@
-<!-- Include the header file -->
 <% include header.html %>
-
 	<body>
 
-	<div>TIFF 2015 Movie Recommander</div>
-		<div class="container">
-			<h2>Dropdowns</h2>
-                                
-			<div class="dropdown">
-				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <div class="container">
+      <img src="/../img/title.png" id="title" alt="TIFF 2015 Movie Recommender title">
+
+    
+       
+        <div class="dropdown" id="land_button">
+        	<!-- <img src="/../img/note.png" id="note" alt="TIFF 2015 Movie Recommender title"> -->
+				<button id="dropdown_cus" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select Available Date
 					<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu">
@@ -18,36 +18,16 @@
 					<li><a onclick="SearchByDate(20150918)">September 18, 2015</a></li>
 					<li><a onclick="SearchByDate(20150919)">September 19, 2015</a></li>
 					<li><a onclick="SearchByDate(20150920)">September 20, 2015</a></li>
-					<li><a onclick="SearchByDate(20150921)">September 21, 2015</a></li>
+					
 				</ul>
 			</div>
-		</div>
-
-		<button type"button" onclick="InsertVideoInfo();">Insert Video Info</button>
-		<button type"button" onclick="ClearDB();">Clear DB</button>
-		<button type"button" onclick="ListAllMovies();">List All Movie</button>
-
-		<div id="video_info"></div>
-
-		<table class="table table-hover">
-			<thead>
-		      	<tr>
-		        	<th>Movie Name</th>
-		        	<th>Youtube Trailer</th>
-		        	<th>Number of Likes</th>
-        			<th>New Article</th>
-		      	</tr>
-			</thead>
 			
-			<tbody>
-					<tr>
-						<td>ASDSAD</td>
-						<td><a href="#">Watch Now</a></td>
-						<td>12312</td>
-						<td>12321</td>
-					</tr>
-			</tbody>
-		</table>
+      <p id="footer">
+      	This website is independent of TIFF and is a fan made unofficial website. Contributors are Ou Ye, Lucy Wu and James Babarinde.
+      </p></div>
 
-	</body>
+
+      
+
+  </body>
 </html>
